@@ -1,30 +1,38 @@
 #include <iostream>
 #include <cstring>
-#include <fstream>
 using namespace std;
-
-ifstream fin("paranteze1.in");
-ofstream fout("paranteze1.out");
 
 char st[1001];
 int vf = 0;
 
+/*
+    Push a character onto the stack
+*/
 void push(int x){
     st[vf++] = x;
 }
 
+/* 
+    Pop the top element from the stack if it's not empty
+*/
 void pop(){
     if (vf){
         vf--;
     }
 }
 
+/*
+    Print the top element of the stack
+*/
 void top(){
     if (vf){
         cout << st[vf - 1] << endl;
     }
 }
 
+/*
+    Check if a string of parentheses is balanced
+*/
 bool check_paranthesis(char *p){
     vf = 0;
     int len = strlen(p);
@@ -41,13 +49,12 @@ bool check_paranthesis(char *p){
 
 int main(){
     int n;
-    fin >> n, fin.get();
-    while (n){
+    cin >> n, cin.get();
+    while (n--){
         char p[256];
-        fin >> p;
+        cin >> p;
        
-        if (check_paranthesis(p)) fout << 1 << endl;
-        else fout << 0 << endl;
-        n--;
+        if (check_paranthesis(p)) cout << 1 << endl;
+        else cout << 0 << endl;
     }
 }
