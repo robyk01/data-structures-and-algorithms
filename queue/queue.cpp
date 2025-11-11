@@ -5,6 +5,7 @@ struct Queue {
     int items[101];
     int front;
     int back;
+    int size;
 };
 
 /*
@@ -13,6 +14,7 @@ struct Queue {
 void initQueue(Queue &q){
     q.front = -1;
     q.back = -1;
+    q.size = 0;
 }
 
 
