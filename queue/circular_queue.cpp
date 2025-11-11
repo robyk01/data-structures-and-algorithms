@@ -33,7 +33,7 @@ bool isFull(Queue &q){
 }
 
 /*
-    Adds an element to the front of the queue
+    Adds an element to the back of the queue
 */
 void enqueue(Queue &q, int value){
     if (isFull(q)) return;
@@ -44,7 +44,7 @@ void enqueue(Queue &q, int value){
 }
 
 /*
-    Removes an element from the back of the queue
+    Removes an element from the front of the queue
 */
 void dequeue(Queue &q){
     if (isEmpty(q)) return;
