@@ -6,3 +6,5 @@ This repository contains my personal notes, implementations, and problem solutio
 [Linked lists](./linked%20list/)
 
 [Queues](./queue/)
+
+[Graphs](./graph/)
