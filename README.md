@@ -8,3 +8,7 @@ This repository contains my personal notes, implementations, and problem solutio
 [Queues](./queue/)
 
 [Graphs](./graph/)
+
+[Trees](./tree/)
+
+[Priority Queue](./priority%20queue/)
