@@ -2,9 +2,9 @@
 #include <queue>
 using namespace std;
 
-#define NMAX 10
+#define NMAX 101
 
-int a[NMAX][NMAX], n, m;
+int G[NMAX][NMAX], n, m;
 bool viz[NMAX];
 
 /*
