@@ -12,3 +12,7 @@ This repository contains my personal notes, implementations, and problem solutio
 [Trees](./tree/)
 
 [Priority Queue](./priority%20queue/)
+
+[Union Find/Disjoint sets](./union%20find/)
+
+[Sorting algorithms](./sort/)
