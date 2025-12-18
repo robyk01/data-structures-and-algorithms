@@ -16,3 +16,5 @@ This repository contains my personal notes, implementations, and problem solutio
 [Union Find/Disjoint sets](./union%20find/)
 
 [Sorting algorithms](./sort/)
+
+[Binary Search Tree](./bst/)
