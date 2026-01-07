@@ -11,6 +11,7 @@ void insertionsort(int a[], int n){
             j--;
         }
 
-        a[j + 1] = key;
+        if (a[j + 1] != key)
+            a[j + 1] = key;
     }
 }
