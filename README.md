@@ -18,3 +18,5 @@ This repository contains my personal notes, implementations, and problem solutio
 [Sorting algorithms](./sort/)
 
 [Binary Search Tree](./bst/)
+
+[Hash Tables](./hash%20tables/)
