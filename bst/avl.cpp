@@ -33,6 +33,19 @@ bool isAVL(node * root){
     return isAVL(root->left) && isAVL(root->right);
 }
 
+
+void insertion(node * n){
+// TODO
+// Must do one of 4 rotations: LL, RR, LR, RL
+}
+
+
+void deletion(node * n){
+// TODO
+// Must do one of 4 rotations: LL, RR, LR, RL
+}
+
+
 int main(){
     // Create a balanced tree
     node * root = new node{10, nullptr, nullptr};
