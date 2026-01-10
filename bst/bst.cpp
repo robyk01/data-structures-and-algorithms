@@ -9,18 +9,20 @@ struct node{
 
 // implementation
 node * bst(int v[], int p, int q){
-    if (p >= q){
+    if (p <= q){
         int m = (p + q) / 2;
         node * t = new node();
         t->val = v[m];
         t->left = bst(v, p, m - 1);
-        t->right = bst(v, m + 1, 2);
+        t->right = bst(v, m + 1, q);
 
         return t;
     }  
 }
 
 // check if its bst using inorder traversal
+// recursively check the left subtree, the current node's value should be greater than the prev value
+
 bool inorder(node * root, int &prev){
     if (!root) return true;
 
@@ -35,7 +37,8 @@ bool inorder(node * root, int &prev){
     return inorder(root->right, prev);
 }
 
-// check if its bst using a min and max value
+
+// check if its bst using a min and max value range
 bool isBSTminmax(node * root, int min, int max){
     if (!root) return true;
 
@@ -45,6 +48,30 @@ bool isBSTminmax(node * root, int min, int max){
     bool left = isBSTminmax(root->left, min, root->val);
     bool right = isBSTminmax(root->right, root->val, max);
     return left && right;
+}
+
+
+// iterative search
+bool search(node * root, int data){
+    node * p = root;
+
+    while (p){
+        if (p->val == data) return true;
+        else if (data < p->val) p = p->left;
+        else p = p->right;
+    }
+
+    return false;
+}
+
+
+// recursive search
+bool recSearch(node * root, int data){
+    if (!root) return false;
+    else if (root->val == data) return true;
+
+    if (data < root->val) return recSearch(root->left, data);
+    else return recSearch(root->right, data);
 }
 
 
