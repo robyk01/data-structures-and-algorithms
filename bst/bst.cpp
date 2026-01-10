@@ -9,15 +9,15 @@ struct node{
 
 // implementation
 node * bst(int v[], int p, int q){
-    if (p <= q){
-        int m = (p + q) / 2;
-        node * t = new node();
-        t->val = v[m];
-        t->left = bst(v, p, m - 1);
-        t->right = bst(v, m + 1, q);
+    if (p > q) return nullptr;
+    
+    int m = (p + q) / 2;
+    node * t = new node();
+    t->val = v[m];
+    t->left = bst(v, p, m - 1);
+    t->right = bst(v, m + 1, q);
 
-        return t;
-    }  
+    return t;
 }
 
 // check if its bst using inorder traversal
@@ -52,23 +52,23 @@ bool isBSTminmax(node * root, int min, int max){
 
 
 // iterative search
-bool search(node * root, int data){
+node * search(node * root, int data){
     node * p = root;
 
     while (p){
-        if (p->val == data) return true;
+        if (p->val == data) return p;
         else if (data < p->val) p = p->left;
         else p = p->right;
     }
 
-    return false;
+    return nullptr;
 }
 
 
 // recursive search
-bool recSearch(node * root, int data){
-    if (!root) return false;
-    else if (root->val == data) return true;
+node * recSearch(node * root, int data){
+    if (!root) return nullptr;
+    else if (root->val == data) return root;
 
     if (data < root->val) return recSearch(root->left, data);
     else return recSearch(root->right, data);
