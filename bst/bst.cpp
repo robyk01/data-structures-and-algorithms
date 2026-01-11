@@ -5,12 +5,13 @@ struct node{
     int val;
     node * left;
     node * right;
+    node * parent;
 };
 
 // implementation
 node * bst(int v[], int p, int q){
     if (p > q) return nullptr;
-    
+
     int m = (p + q) / 2;
     node * t = new node();
     t->val = v[m];
@@ -72,6 +73,86 @@ node * recSearch(node * root, int data){
 
     if (data < root->val) return recSearch(root->left, data);
     else return recSearch(root->right, data);
+}
+
+
+// inserts the node x by starting from the root and looking for the empty leaf
+void insert(node * &root, int x){
+    if (!root){
+        node * n = new node();
+        n->val = x;
+        root->left = root->right = nullptr;
+        root = n;
+        return;
+    }
+
+    node * p = root, *prev = nullptr;
+    while (p){
+        prev = p;
+        if (x == p->val) return;
+
+        if (x < p->val) p = p->left;
+        else p = p->right;
+    }
+
+    node * n = new node();
+    n->val = x;
+    n->left = n->right = nullptr;
+    n->parent = prev;
+
+    if (n->val < prev->val) prev->left = n;
+    else prev->right = n;
+}
+
+
+// remove a node if it has 0 or 1 child
+void remove01(node * &root, node * parent, node * p){
+    if (!root) return;
+
+    node * child;
+
+    if (p->left) child = p->left;
+    else child = p->right;
+
+    if (!parent){
+        root = child;
+    } else {
+        if (p == parent->left) parent->left = child;
+        else parent->right = child;
+    }
+
+    if (child) child->parent = parent;
+    delete p;
+}
+
+
+// remove a node if it has 2 children
+void remove2(node * &root, int x){
+    node * p = root;
+    node * parentp = nullptr;
+
+    while (p && p->val != x){
+        parentp = p;
+        if (x < p->val) p = p->left;
+        else p = p->right;
+    }
+
+    if (!p) return;
+
+    if (p->left && p->right){
+        node * q = p->right;
+        node * parentq = p;
+
+        while (q->left){
+            parentq = q;
+            q = q->left;
+        }
+
+        p->val = q->val;
+        remove01(root, parentq, q);
+    } else {
+        remove01(root, parentp, p);
+    }
 }
 
 
