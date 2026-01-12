@@ -5,6 +5,7 @@ struct node{
     int val;
     node * left;
     node * right;
+    node * parent;
 };
 
 // returns the height of the tree
@@ -31,6 +32,49 @@ bool isAVL(node * root){
     if (bf < -1 || bf > 1) return false;
 
     return isAVL(root->left) && isAVL(root->right);
+}
+
+// perform a left rotation
+void rotateLeft(node * &root, node * x){
+    node * y = x->right;
+    x->right = y->left;
+
+    if (y->left){
+        y->left->parent = x;
+    }
+
+    y->parent = x->parent;
+
+    if (!x->parent){
+        root = y;
+    } else if (x == x->parent->left){
+        x->parent->left = y;
+    } else x->parent->right = y;
+
+    y->left = x;
+    x->parent = y;
+}
+
+
+// perform a right rotation
+void rotateRight(node * &root, node * x){
+    node * y = x->left;
+    x->left = y->right;
+
+    if (y->right){
+        y->right->parent = x;
+    }
+
+    y->parent = x->parent;
+
+    if (!x->parent){
+        root = y;
+    } else if (x == x->parent->left){
+        x->parent->left = y;
+    } else x->parent->right = y;
+
+    y->right = x;
+    x->parent = y;
 }
 
 
