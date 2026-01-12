@@ -9,7 +9,7 @@ int h(int k, int m){
     return k % m;
 }
 
-// lineaer probing: hash with probe number i
+// lineear probing: hash with probe number i
 // formula: h(k, i) = (h(k) + i) mod m
 int hashWithProbe(int k, int i, int m){
     return (h(k, m) + i) % m;

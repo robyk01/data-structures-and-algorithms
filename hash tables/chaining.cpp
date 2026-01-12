@@ -1,12 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Hash Table is a data structure that stores key, value pairs and supports fast operations like insert, search, delete
-// Collisions:
-//      Separate Chaining: each bucket stores a list (linked list) of items
-//      Open Addressing: all items live in the array. If a bucket is taken, you probe for another slot
-
-
 
 // Separate Chaining
 const int M = 7;
@@ -28,7 +22,7 @@ void initTable(Entry* table[]) {
     for (int i = 0; i < M; i++) table[i] = nullptr;
 }
 
-// we search for a key in the table
+// search for a key in the table
 Entry* findEntry(Entry * table[], int key){
     int idx = hashKey(key);
 
