@@ -20,3 +20,5 @@ This repository contains my personal notes, implementations, and problem solutio
 [Binary Search Tree](./bst/)
 
 [Hash Tables](./hash%20tables/)
+
+[Tries](./tries/)
